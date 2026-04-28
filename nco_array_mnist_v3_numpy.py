@@ -55,19 +55,19 @@ def load_mnist_binary(images_path, labels_path):
     return images, labels
 
 print("Loading MNIST...")
-data_dir = "mnist_data"
-os.makedirs(data_dir, exist_ok=True)
+data_dir = "."
+# Files are in the repo root (pushed from Termux)
 
-# Try gz first, then raw
-train_im_gz = os.path.join(data_dir, "train-images-idx3-ubyte.gz")
-train_lb_gz = os.path.join(data_dir, "train-labels-idx1-ubyte.gz")
-test_im_gz = os.path.join(data_dir, "t10k-images-idx3-ubyte.gz")
-test_lb_gz = os.path.join(data_dir, "t10k-labels-idx1-ubyte.gz")
+# Try .gz files in current directory (preferred — already exist)
+train_im_gz = "train-images-idx3-ubyte.gz"
+train_lb_gz = "train-labels-idx1-ubyte.gz"
+test_im_gz = "t10k-images-idx3-ubyte.gz"
+test_lb_gz = "t10k-labels-idx1-ubyte.gz"
 
-train_raw = os.path.join(data_dir, "train-images-idx3-ubyte")
-train_lb_raw = os.path.join(data_dir, "train-labels-idx1-ubyte")
-test_raw = os.path.join(data_dir, "t10k-images-idx3-ubyte")
-test_lb_raw = os.path.join(data_dir, "t10k-labels-idx1-ubyte")
+train_raw = "train-images-idx3-ubyte"
+train_lb_raw = "train-labels-idx1-ubyte"
+test_raw = "t10k-images-idx3-ubyte"
+test_lb_raw = "t10k-labels-idx1-ubyte"
 
 if all(os.path.exists(f) for f in [train_raw, train_lb_raw, test_raw, test_lb_raw]):
     train_im, train_lb = load_mnist_binary(train_raw, train_lb_raw)
